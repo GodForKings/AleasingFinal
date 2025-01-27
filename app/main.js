@@ -50,6 +50,10 @@ prevBtn.onclick = function () {
 	moveSlider('prev')
 }
 
+window.onload = setInterval(() => {
+	moveSlider('next')
+}, 5000)
+
 function moveSlider(direction) {
 	let sliderItems = sliderList.querySelectorAll('.slider__item')
 	let thumbnailItems = document.querySelectorAll('.thumbnail .slider__item')
