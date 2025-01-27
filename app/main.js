@@ -35,6 +35,7 @@ let slider = document.querySelector('.slider')
 let sliderList = slider.querySelector('.slider .slider__list')
 let thumbnail = document.querySelector('.slider .thumbnail')
 let thumbnailItems = thumbnail.querySelectorAll('.slider__item')
+let pause = false
 
 thumbnail.appendChild(thumbnailItems[0])
 
@@ -51,13 +52,15 @@ prevBtn.onclick = function () {
 }
 
 window.onload = setInterval(() => {
-	moveSlider('next')
+	if (!pause) moveSlider('next')
+	else pause = false
 }, 5000)
 
 function moveSlider(direction) {
 	let sliderItems = sliderList.querySelectorAll('.slider__item')
 	let thumbnailItems = document.querySelectorAll('.thumbnail .slider__item')
-
+	pause = true
+	
 	if (direction === 'next') {
 		sliderList.appendChild(sliderItems[0])
 		thumbnail.appendChild(thumbnailItems[0])
